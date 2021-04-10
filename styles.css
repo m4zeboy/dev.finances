@@ -1,3 +1,18 @@
+/* Global =============================== */
+:root {
+    --dark-blue: #1e2335;
+}
+
+::-webkit-scrollbar {
+    background: #f0f2f5;
+    width: .4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1e2335;
+    border-radius: .3rem;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,4 +22,122 @@
 body {
     background: #f0f2f5;
     font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* Titles =============================== */
+h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 0.8rem;  
+  color: var(--dark-blue);
+  font-weight: 500;
+}
+
+/* Header =============================== */
+header {
+    background: #240f70;
+    padding: 2rem 0 10rem;
+    text-align: center;
+}
+
+header h1#logo {
+    color: white;
+    font-weight: 100;
+}
+
+/* Balance =============================== */
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: white;
+    margin-top:0;  
+
+}
+
+/* Cards =============================== */
+.card {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: .25rem;
+    border: 0.5px solid #e7e7e7;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+.card.total {
+    background: #6434be;
+    color: white;
+}
+
+/* Table =============================== */
+#data-table {
+    width: 100%;
+    border-spacing: 0 0.5rem;
+    color: #a6adcc;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table tbody tr {
+    opacity: .7;
+}
+table tr:hover {
+    opacity: 1;
+}
+
+table th {
+    background: white;
+    opacity: .6;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+table td{
+    background: white;
+    padding: 1rem 2rem;
+    font-weight: 500;
+}
+
+td.description {
+    color: var(--dark-blue);
+}
+
+td.income {
+    color: #12a454;
+}
+
+td.expense {
+    color: #e92929;
+}
+
+
+/* Footer =============================== */
+footer {
+    text-align: center;
+    padding: 1rem 0 1rem;
+    color: #1e2335;
+    opacity: .6;
+    background: #1e23354f;
+    margin-top: 4rem;
 }
