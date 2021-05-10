@@ -4,14 +4,15 @@
 }
 
 ::-webkit-scrollbar {
-    background: #222222;
+    background: #363b46;
     width: .8rem;
+    height: .8rem;
     padding: 0.2rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #6666;
-    border: 3px solid #222;
+    background-color: #aca6a6;
+    border: 3px solid #363b46;
     border-radius: .3rem;
 }
 
@@ -19,6 +20,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 93.75%; /* 15px */
 }
 
 body {
@@ -51,6 +56,21 @@ h2 {
   font-weight: 500;
 }
 
+/* Links & Buttons =============================== */
+a {
+    color: #4484FF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #914EFF;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
 /* Header =============================== */
 header {
     background: #222222;
@@ -78,8 +98,8 @@ header h1#logo {
 .card {
     background: #2c303a;
     padding: 1.5rem 2rem;
-    border-radius: .25rem;
-    border: 0.5px solid #31353f;
+    border-radius: .5rem;
+    border: 0.5px solid #373b46;
     margin-bottom: 2rem;
     color: var(--dark-blue);
 }
@@ -102,6 +122,10 @@ header h1#logo {
 
 .card.total {
     background: linear-gradient(10deg, #914EFF 0%, #4484FF 100%);
+    transition:  background ease-in-out .3s;
+}
+.card.total:hover {
+    background: linear-gradient(-10deg, #914EFF 0%, #4484FF 100%);
 }
 
 .card.total h3 {
@@ -114,11 +138,17 @@ header h1#logo {
     font-weight: 500;
 }
 
+
+
+/* Table =============================== */
+section#transaction {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
 section#transaction h2 {
     color: white;
 }
-
-/* Table =============================== */
 #data-table {
     width: 100%;
     border-spacing: 0 0.5rem;
@@ -129,6 +159,12 @@ table thead tr th:first-child,
 table tbody tr td:first-child {
     border-radius: 0.25rem 0 0 0.25rem;
 }
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
 
 table tbody tr {
     opacity: .7;
@@ -171,4 +207,16 @@ footer {
     margin: 4rem 0 2rem;
     font-weight: 200;
     opacity: .9;
+}
+
+/* Responsive =============================== */
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%;
+    }
+    #balance {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
 }
