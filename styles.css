@@ -67,17 +67,23 @@ h2 {
 
 /* Links & Buttons =============================== */
 a {
-    color: var(--light-blue);
+    color: var(--table-color);
     text-decoration: none;
-}
-
-a:hover {
-    color: var(--light-purple);
 }
 
 .button.new {
     display: inline-block;
     margin-bottom: 1rem;
+    border: 1px solid #a6adcc56;
+    border-radius: 2px;
+    padding: 0.5rem;
+    transition: all ease .2s;
+}
+
+.button.new:hover {
+    background-color: #a6adcc;
+    color: var(--bg-color);
+
 }
 
 button {
@@ -113,6 +119,14 @@ button:hover {
     opacity: 1;
 }
 
+.rocketseat {
+    color: #914EFF;
+}
+.rocketseat:hover {
+    text-decoration: underline;
+
+}
+
 /* Header =============================== */
 header {
     background: var(--dark-gray);
@@ -127,7 +141,7 @@ header h1#logo {
 
 /* Balance =============================== */
 #balance {
-    margin-top: -7rem;
+    margin-top: -6rem;
 }
 
 #balance h2 {
@@ -143,6 +157,14 @@ header h1#logo {
     border-radius: .5rem;
     border: 0.5px solid var(--card-border-gray);
     margin-bottom: 2rem;
+    transition: all ease-in-out .2s;
+
+}
+
+.card:hover,
+.card.total:hover
+ {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.473);
 }
 
 .card h3 {
@@ -162,11 +184,11 @@ header h1#logo {
 }
 
 .card.total {
-    background: linear-gradient(10deg, #914EFF 0%, #4484FF 100%);
-    transition:  background ease-in-out .3s;
+    background: linear-gradient(15deg, #914EFF 0%, #4484FF 100%);
+    transition: all ease-in-out .2s;
 }
 .card.total:hover {
-    background: linear-gradient(-10deg, #914EFF 0%, #4484FF 100%);
+    background: linear-gradient(-15deg, #914EFF 0%, #4484FF 100%);
 }
 
 .card.total h3 {
@@ -325,9 +347,9 @@ input:focus {
 footer {
     text-align: center;
     color: #dadada;
-    margin: 4rem 0 2rem;
+    padding: 4rem 0 4rem;
     font-weight: 200;
-    opacity: .9;
+    opacity: .6;
 }
 
 /* Responsive =============================== */

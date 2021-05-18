@@ -59,7 +59,7 @@
             <a 
                 href="#" 
                 class="button new"
-                onclick="Modal.open()"
+                onclick="Modal.toggleActive()"
             >+ Nova transação</a>
 
             <table id="data-table" class="container">
@@ -132,7 +132,7 @@
                     </div>
 
                     <div class="input-group actions">
-                        <a href="#" class="button cancel" onclick="Modal.close()">Cancelar</a>
+                        <a href="#" class="button cancel" onclick="Modal.toggleActive()">Cancelar</a>
                         <button type="submit">Salvar</button>
                     </div>
                 </form>
@@ -142,26 +142,10 @@
 
     <footer>
         <p>mec.finance$ &copy; - developed by m4zeboy</p>
+        <strong>Maratona Discover 1.0 - <a href="https://rocketseat.com.br/" class="rocketseat" target="_blank">Rocketseat</a></strong>
     </footer>
 
-    <script>
-        const Modal = {
-            open(){
-                // Abrir modal
-                // Adcionar a class .active ao modal
-                document.querySelector('.modal-overlay')
-                    .classList
-                    .add('active')
-            },
-            close() {
-                // fechar modal
-                // remover a class .active do modal
-                document.querySelector('.modal-overlay')
-                    .classList
-                    .remove('active')
-            }
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
