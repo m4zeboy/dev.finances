@@ -22,32 +22,40 @@ const Modal = {
     }
 }
 
-const transactions = [
-    {
-        id:0,
-        description: "Energia Elétrica",
-        amount: -30076,
-        date: '07/04/2021'
-    },
-    {
-        id:1,
-        description: "Água",
-        amount: -23475,
-        date: '08/04/2021'
-    },
-    {
-        id:2,
-        description: "Trabalho",
-        amount: 378657,
-        date: '08/04/2021'
-    },
-]
-
 const Transaction = {
-    all: transactions,
+    all: [
+        {
+            id:0,
+            description: "Energia Elétrica",
+            amount: -30076,
+            date: '07/04/2021'
+        },
+        {
+            id:1,
+            description: "Água",
+            amount: -23475,
+            date: '08/04/2021'
+        },
+        {
+            id:2,
+            description: "Trabalho",
+            amount: 378657,
+            date: '08/04/2021'
+        },
+        {
+            id:3,
+            description: "Tenis de corrida",
+            amount: -18764,
+            date: '25/05/2021'
+        },
+    ],
     add(transaction) {
         Transaction.all.push(transaction)
-        console.log(Transaction.all)
+        App.reload()
+    },
+    remove(index) {
+        Transaction.all.splice(index, 1);
+        App.reload()
     },
     incomes() {
         // Somar as entradas
@@ -59,7 +67,6 @@ const Transaction = {
         })
         return income;
     },
-
     expense() {
         // Somar as saídas
         let expense = 0;
@@ -124,18 +131,62 @@ const DOM = {
         document
             .querySelector('#totalDisplay')
             .innerHTML = Utils.formatCurrency(Transaction.total())
+    },
+    clearTransations() {
+        DOM.transactionsContainer.innerHTML = "";
     }
 }
 
-transactions.forEach(function(transaction) {
-    DOM.addTransaction(transaction)
-})
+const Form = {
+    spanError: document.querySelector('span#error'),
+    description: document.querySelector('input#description'),
+    amount: document.querySelector('input#amount'),
+    date: document.querySelector('input#date'),
+    getValues() {
+        return {
+            description: Form.description.value,
+            amount: Form.amount.value,
+            date: Form.date.value
+        }
+    },
+    validateFields(){
+        const { description, amount, date } = Form.getValues()
 
-DOM.updateBalance()
+        if (description.trim() === "" || amount.trim() === "" ||date.trim() === "") {
+            throw new Error("Por favor preencha todos os campos")
+        }
+    },
+ 
+    submit(event) {
+        event.preventDefault()    
 
-Transaction.add({
-    id: 3,
-    description: "Tenis de corrida",
-    amount: -23423,
-    date: "23/05/2021"
-})
+        try {
+            // verificar se os campos foram preenchidos
+            Form.validateFields()  
+            // formatar os dados para salvar
+            // salvar
+            // fechar o modal
+            // atualizar a aplicação
+        } catch (error) {
+            this.spanError.classList.add('active')
+            this.spanError.innerHTML = error.message
+            // alert(error.message)
+        }
+        
+    }
+}
+
+const App = {
+    init() {
+        Transaction.all.forEach(transaction => DOM.addTransaction(transaction))
+
+        DOM.updateBalance()
+
+    },
+    reload() {
+        DOM.clearTransations()
+        App.init()
+    }
+}
+
+App.init()

@@ -40,6 +40,24 @@ body {
     font-family: SF Pro Display, sans-serif;
 }
 
+.error {
+    display: none;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#error.active {
+    display: inline-block;
+    visibility: visible;
+    background-color: #e6411834;
+    color: #f84d22be;
+    border-radius: 1px;
+    border: 1px solid #e6411859;
+    padding: 0.25rem 0.5rem;
+}
+
 /* Estratégia para esconder os títulos do layout mas de uma forma que não atrapalhe os leitores de tela */
 .sr-only {
     position: absolute;
@@ -282,6 +300,7 @@ td.expense {
 .modal {
     background: var(--card-bg-gray);
     border: 1px solid var(--card-border-gray);
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.219);
     border-radius: 0.5rem;
     padding: 2.4rem;
     width: 90%;
