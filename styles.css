@@ -40,7 +40,33 @@ body {
     font-family: SF Pro Display, sans-serif;
 }
 
-.error {
+#success {
+    display: none;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+} 
+
+#success.active {
+    position: absolute;
+    z-index: 100;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    font-size: 1.1em;
+    padding: 1.2rem;
+    display: inline-block;
+    visibility: visible;
+    background-color: #26f16a25;
+    color: #26f16ab9;
+    border: 1px solid #26f16ab9;
+    border-radius: 2px;
+    box-shadow: 5px 15px 10px rgba(24, 24, 24, 0.568);
+}
+
+#error {
     display: none;
     visibility: hidden;
     width: 1px;
@@ -53,7 +79,7 @@ body {
     visibility: visible;
     background-color: #e6411834;
     color: #f84d22be;
-    border-radius: 1px;
+    border-radius: 2px;
     border: 1px solid #e6411859;
     padding: 0.25rem 0.5rem;
 }
@@ -328,8 +354,9 @@ input {
 }
 
 input:focus {
-    outline-color: #fff;
+    outline-color: #363b46;
     outline-style: auto;
+    outline-width: 3px;
 }
 
 .input-group {

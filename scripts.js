@@ -12,14 +12,17 @@ const Modal = {
         document.querySelector('.modal-overlay')
             .classList
             .remove('active')
-    },
-
-    toggleActive() {
-        document   
+        
+        },
+        
+        toggleActive() {
+            document   
             .querySelector('.modal-overlay')
             .classList
             .toggle('active')
-    }
+
+            DOM.hideErrors()
+        }
 }
 
 const Transaction = {
@@ -95,6 +98,14 @@ const Utils = {
             currency: "BRL"
         })
         return signal + value;
+    },
+    formatAmount(value) {
+        value = Number(value) * 100
+        return value
+    },
+    formatDate(date) {
+        const splittedDate = date.split("-")
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
     }
 }
 
@@ -134,11 +145,28 @@ const DOM = {
     },
     clearTransations() {
         DOM.transactionsContainer.innerHTML = "";
+    },
+    // erros
+    span_error: document.querySelector('span#error'),
+    displayErros(message) {
+        this.span_error.classList.add('active')
+        this.span_error.innerHTML = message;
+    },
+    hideErrors() {
+        this.span_error.innerHTML = "";
+        this.span_error.classList.remove('active')
+    },
+    // Success
+    span_success: document.querySelector('#success'),
+    displaySuccess(message) {   
+        this.span_success.classList.add('active')
+    },
+    hideSuccess(){
+        this.span_success.classList.remove('active')
     }
 }
 
 const Form = {
-    spanError: document.querySelector('span#error'),
     description: document.querySelector('input#description'),
     amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
@@ -150,13 +178,33 @@ const Form = {
         }
     },
     validateFields(){
-        const { description, amount, date } = Form.getValues()
+        let { description, amount, date } = Form.getValues()
 
         if (description.trim() === "" || amount.trim() === "" ||date.trim() === "") {
             throw new Error("Por favor preencha todos os campos")
         }
     },
- 
+    formatValues() {
+        let { date, description, amount, } = Form.getValues();
+
+        amount = Utils.formatAmount(amount)
+
+        date = Utils.formatDate(date)
+
+        return {
+            description,
+            amount,
+            date
+        }
+    },
+    saveTransaction(transaction) {
+        Transaction.add(transaction)
+    },
+    clearFields() {
+        Form.description.value = "";
+        Form.amount.value = "";
+        Form.date.value = "";
+    },
     submit(event) {
         event.preventDefault()    
 
@@ -164,12 +212,24 @@ const Form = {
             // verificar se os campos foram preenchidos
             Form.validateFields()  
             // formatar os dados para salvar
+            const transaction = Form.formatValues();
             // salvar
+            Form.saveTransaction(transaction)
+            //apagar os campos
+            Form.clearFields()
             // fechar o modal
+            Modal.close()
+            
+            //exibir mensagem de sucesso
+            DOM.displaySuccess("Transação Salva")
+            setTimeout(()=> {
+                DOM.hideSuccess("Transação Salva")
+            },3000) 
+            
             // atualizar a aplicação
+            App.reload()
         } catch (error) {
-            this.spanError.classList.add('active')
-            this.spanError.innerHTML = error.message
+            DOM.displayErros(error.message)
             // alert(error.message)
         }
         
