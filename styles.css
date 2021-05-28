@@ -1,3 +1,23 @@
+
+
+/* Estratégia para esconder os títulos do layout mas de uma forma que não atrapalhe os leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap
+}
+
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* Alerts #======================== errors or success */
 #success {
     display: none;
     visibility: hidden;
@@ -47,23 +67,6 @@
     border-radius: 2px;
     border: 1px solid #e6411859;
     padding: 0.25rem 0.5rem;
-}
-
-/* Estratégia para esconder os títulos do layout mas de uma forma que não atrapalhe os leitores de tela */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap
-}
-
-.container {
-    width: min(90vw, 800px);
-    margin: auto;
 }
 
 /* Titles =============================== */
@@ -192,6 +195,10 @@ td.income {
 
 td.expense {
     color: #f83e3e;
+}
+
+td img.deleteTransaction {
+    cursor: pointer;
 }
 
 
