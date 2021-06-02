@@ -2,6 +2,8 @@
 
 # 🚀 MARATONA DISCOVER by ROCKETSEAT
 
+**Projeto hospedado (e funcionando) na vercel:** https://dev-finances-sand.vercel.app/
+
 Aplicação para controle de finanças - **mec.finance$** - Desenvolvida usando apenas HTML CSS e JS.
 
 Foi uma sequência de aulas para aplicar os conhecimentos teóricos passados nos cursos do Discover.
